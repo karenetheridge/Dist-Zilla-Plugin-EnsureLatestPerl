@@ -24,6 +24,8 @@ set_absolute_time($fakenow);
 # fake the current perl version to be the latest known stable release.
 local $] = Versions::latest_stable_perl();
 
+$ENV{DZIL_ANY_PERL} = 0;
+
 my $tzil = Builder->from_config(
     { dist_root => 'does-not-exist' },
     {

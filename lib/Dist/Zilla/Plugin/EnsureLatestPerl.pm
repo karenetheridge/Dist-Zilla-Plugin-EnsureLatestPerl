@@ -31,6 +31,8 @@ sub before_release
 {
     my $self = shift;
 
+    $self->log('DZIL_ANY_PERL set: skipping perl version check') if $ENV{DZIL_ANY_PERL};
+
     # we cannot know in advance the release schedule of Module::CoreList in order to check the latest perl
     # releases, but we can make a guess -- development releases are made once a month.  We'll assume that any
     # Module::CoreList older than 2 months old is out of date, and lean on modules like [PromptIfStale] to confirm

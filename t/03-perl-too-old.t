@@ -16,6 +16,8 @@ my $latest_dev_perl = Versions::latest_dev_perl();
 # fake the current perl version to be the latest known stable release.
 local $] = '5.010000';
 
+$ENV{DZIL_ANY_PERL} = 0;
+
 my $tzil = Builder->from_config(
     { dist_root => 'does-not-exist' },
     {
