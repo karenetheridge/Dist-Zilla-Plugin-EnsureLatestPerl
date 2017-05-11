@@ -7,22 +7,14 @@ use Test::DZil;
 use Test::Deep;
 use Test::Fatal;
 use Path::Tiny;
-use Test::MockTime 'set_absolute_time';
-use POSIX 'mktime';
 
 use lib 't/lib';
 use Versions;
-
-# instead of faking Module::CoreList's version and release list, it is much
-# easier to fake today's date and current running perl version...
-my ($year, $month, $day) = Versions::date_of_mcl_release();
-my $fakenow = mktime(0, 0, 0, $day, $month - 1, $year - 1900);
-
-# fake today's date to be the same date as the MCL version.
-set_absolute_time($fakenow);
+my $latest_stable_perl = Versions::latest_stable_perl();
+my $latest_dev_perl = Versions::latest_dev_perl();
 
 # fake the current perl version to be the latest known stable release.
-local $] = Versions::latest_stable_perl();
+local $] = '5.010000';
 
 my $tzil = Builder->from_config(
     { dist_root => 'does-not-exist' },
@@ -40,10 +32,10 @@ my $tzil = Builder->from_config(
 );
 
 $tzil->chrome->logger->set_debug(1);
-is(
+like(
     exception { $tzil->release },
-    undef,
-    'release proceeds normally',
+    qr/^\[EnsureLatestPerl\] current perl \(5.010000\) is neither the current stable nor development perl \($latest_stable_perl, $latest_dev_perl\) -- \(disable check with DZIL_ANY_PERL=1\)/,
+    'release halts if perl is too old',
 );
 
 cmp_deeply(

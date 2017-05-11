@@ -15,7 +15,7 @@ use Versions;
 
 # instead of faking Module::CoreList's version and release list, it is much
 # easier to fake today's date and current running perl version...
-my ($year, $month, $day) = Versions::date_of_mcl_release();
+my ($year, $month, $day) = (2100, 6, 0);    # a long time from now...
 my $fakenow = mktime(0, 0, 0, $day, $month - 1, $year - 1900);
 
 # fake today's date to be the same date as the MCL version.
@@ -40,10 +40,10 @@ my $tzil = Builder->from_config(
 );
 
 $tzil->chrome->logger->set_debug(1);
-is(
+like(
     exception { $tzil->release },
-    undef,
-    'release proceeds normally',
+    qr/^\[EnsureLatestPerl\] Module::CoreList is not new enough to check if this is the latest Perl \(expected at least 5\.2100\d\d\d\d\) -- \(disable check with DZIL_ANY_PERL=1\)/,
+    'release halts if Module::CoreList is too much out of date',
 );
 
 cmp_deeply(
