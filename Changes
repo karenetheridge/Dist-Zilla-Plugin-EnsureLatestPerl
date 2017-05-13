@@ -1,6 +1,6 @@
 Revision history for Dist-Zilla-Plugin-EnsureLatestPerl
 
-{{$NEXT}}
+0.003     2017-05-13 13:39:54Z
           - fix prereq on Module::CoreList to get the user into an initial
             working state (and ensures that tests pass)
 
