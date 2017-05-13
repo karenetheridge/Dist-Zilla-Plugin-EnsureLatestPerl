@@ -43,7 +43,7 @@ sub before_release
     my @gmtime = gmtime(time() - $delta);
     my $expected_version = sprintf('5.%04d%02d%02d', $gmtime[5] + 1900, $gmtime[4] + 1, $gmtime[3]);
 
-    my $error_suffix = '(disable check with DZIL_ANY_PERL=1)';
+    my $error_suffix = 'disable check with DZIL_ANY_PERL=1';
 
     if (not eval { Module::CoreList->VERSION($expected_version); 1 })
     {
