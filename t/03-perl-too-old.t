@@ -13,7 +13,7 @@ use Versions;
 my $latest_stable_perl = Versions::latest_stable_perl();
 my $latest_dev_perl = Versions::latest_dev_perl();
 
-# fake the current perl version to be the latest known stable release.
+# fake the current perl version to be something old.
 local $] = '5.010000';
 
 $ENV{DZIL_ANY_PERL} = 0;
