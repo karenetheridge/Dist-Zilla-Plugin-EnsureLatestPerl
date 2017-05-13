@@ -34,11 +34,13 @@ my $tzil = Builder->from_config(
 );
 
 $tzil->chrome->logger->set_debug(1);
+### BEGIN $tzil->release check
 like(
     exception { $tzil->release },
     qr/^\[EnsureLatestPerl\] current perl \(5.010000\) is neither the current stable nor development perl \($latest_stable_perl, $latest_dev_perl\) -- \(disable check with DZIL_ANY_PERL=1\)/,
     'release halts if perl is too old',
 );
+### END $tzil->release check
 
 cmp_deeply(
     $tzil->distmeta,
