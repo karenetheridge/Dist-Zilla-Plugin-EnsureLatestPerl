@@ -17,6 +17,7 @@ use Versions;
 # easier to fake today's date and current running perl version...
 my ($year, $month, $day) = Versions::date_of_mcl_release();
 my $fakenow = mktime(0, 0, 0, $day, $month - 1, $year - 1900);
+diag "mktime failed: $!" if not $fakenow;
 
 # fake today's date to be the same date as the MCL version.
 set_absolute_time($fakenow);
