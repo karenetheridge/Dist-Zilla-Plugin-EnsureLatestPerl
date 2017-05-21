@@ -1,6 +1,8 @@
 Revision history for Dist-Zilla-Plugin-EnsureLatestPerl
 
 {{$NEXT}}
+          - (hopefully) fix tests on MSWin32, by avoiding epoch times larger
+            than 32 bits
 
 0.003     2017-05-13 13:39:54Z
           - fix prereq on Module::CoreList to get the user into an initial
