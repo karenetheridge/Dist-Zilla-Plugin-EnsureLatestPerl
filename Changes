@@ -1,6 +1,6 @@
 Revision history for Dist-Zilla-Plugin-EnsureLatestPerl
 
-{{$NEXT}}
+0.004     2017-05-21 01:39:40Z
           - (hopefully) fix tests on MSWin32, by avoiding epoch times larger
             than 32 bits
 
