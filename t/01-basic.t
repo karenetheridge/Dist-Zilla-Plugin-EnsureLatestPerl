@@ -10,6 +10,10 @@ use Path::Tiny;
 use Test::MockTime 'set_absolute_time';
 use POSIX 'mktime';
 
+# preload, so as to not cause issues with subsequent alteration of $]
+use Devel::InnerPackage;
+use Module::Pluggable::Object;
+
 use lib 't/lib';
 use Versions;
 
