@@ -1,6 +1,6 @@
 Revision history for Dist-Zilla-Plugin-EnsureLatestPerl
 
-{{$NEXT}}
+0.005     2017-05-24 02:00:40Z
           - fix tests on older perls: preload some modules before $] is altered
 
 0.004     2017-05-21 01:39:40Z
