@@ -1,6 +1,7 @@
 Revision history for Dist-Zilla-Plugin-EnsureLatestPerl
 
 {{$NEXT}}
+          - handle additional formats of $Module::CoreList::VERSION
 
 0.005     2017-05-24 02:00:40Z
           - fix tests on older perls: preload some modules before $] is altered
