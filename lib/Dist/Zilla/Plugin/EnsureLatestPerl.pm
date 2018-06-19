@@ -5,7 +5,7 @@ package Dist::Zilla::Plugin::EnsureLatestPerl;
 # ABSTRACT: Ensure the author is releasing using the latest Perl
 # KEYWORDS: plugin release develop author perl version latest
 
-our $VERSION = '0.008';
+our $VERSION = '0.009';
 
 use Moose;
 with 'Dist::Zilla::Role::BeforeRelease';
