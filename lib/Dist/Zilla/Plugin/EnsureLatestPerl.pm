@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 package Dist::Zilla::Plugin::EnsureLatestPerl;
-# vim: set ts=8 sts=4 sw=4 tw=115 et :
+# vim: set ts=8 sts=2 sw=2 tw=115 et :
 # ABSTRACT: Ensure the author is releasing using the latest Perl
 # KEYWORDS: plugin release develop author perl version latest
 
