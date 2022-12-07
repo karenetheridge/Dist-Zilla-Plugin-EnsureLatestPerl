@@ -14,6 +14,8 @@ use Module::CoreList;
 use List::Util 'first';
 use namespace::autoclean;
 
+sub _PERLVERSION { $] }
+
 around dump_config => sub
 {
     my ($orig, $self) = @_;
@@ -58,8 +60,8 @@ sub before_release
     my $latest_dev_perl = first { /^5\.(\d{3})/; defined $1 and $1 % 2 == 1 } @all_perl_releases;
 
     $self->log_fatal([ 'current perl (%s) is neither the latest stable nor development perl (%s, %s) -- %s',
-            $], $latest_stable_perl, $latest_dev_perl, $error_suffix ])
-        if "$]" ne $latest_stable_perl and "$]" ne $latest_dev_perl;
+            _PERLVERSION, $latest_stable_perl, $latest_dev_perl, $error_suffix ])
+        if _PERLVERSION.'' ne $latest_stable_perl and _PERLVERSION.'' ne $latest_dev_perl;
 }
 
 __PACKAGE__->meta->make_immutable;

@@ -1,6 +1,8 @@
 Revision history for Dist-Zilla-Plugin-EnsureLatestPerl
 
 {{$NEXT}}
+          - use a more reliable way of hacking $] in tests that does not break
+            on certain combinations of perls with other modules that rely on $]
 
 0.009     2022-10-23 17:58:16Z
           - adjust artificial $] in tests so postderef still works (RT#144904)
