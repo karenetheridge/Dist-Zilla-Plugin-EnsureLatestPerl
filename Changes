@@ -1,6 +1,6 @@
 Revision history for Dist-Zilla-Plugin-EnsureLatestPerl
 
-{{$NEXT}}
+0.010     2022-12-07 03:25:56Z
           - use a more reliable way of hacking $] in tests that does not break
             on certain combinations of perls with other modules that rely on $]
 
